@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Grid Load Balancer (SDG 7)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #064e3b, #065f46);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <div class="container mx-auto p-6 max-w-5xl">
+        <h1 class="text-5xl font-bold text-center my-10 text-emerald-300 drop-shadow-lg">🔌 Energy Grid Load Balancer<br><span class="text-2xl">SDG 7: Affordable & Clean Energy</span></h1>
+
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10">
+            <form id="input-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Hour (0-23)</label>
+                    <input type="number" id="hour" min="0" max="23" value="14" class="w-full px-5 py-4 bg-white/20 rounded-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 text-white placeholder-gray-300">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Day of Week (0-6)</label>
+                    <input type="number" id="day" min="0" max="6" value="1" class="w-full px-5 py-4 bg-white/20 rounded-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 text-white">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Temperature (°C)</label>
+                    <input type="number" id="temp" value="30" step="0.1" class="w-full px-5 py-4 bg-white/20 rounded-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 text-white">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Humidity (%)</label>
+                    <input type="number" id="humidity" value="70" class="w-full px-5 py-4 bg-white/20 rounded-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 text-white">
+                </div>
+                <div class="lg:col-span-4 text-center mt-6">
+                    <button type="submit" class="px-10 py-5 bg-emerald-600 hover:bg-emerald-500 rounded-2xl font-bold text-xl transition shadow-xl">
+                        🔍 Get AI Insights
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="loading" class="hidden text-center my-12">
+            <div class="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-emerald-400"></div>
+            <p class="mt-6 text-2xl">Analyzing with IBM Granite AI...</p>
+        </div>
+
+        <div id="results" class="hidden space-y-10 mt-10">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10">
+                <h2 class="text-3xl font-bold mb-8 text-emerald-300">Predicted Energy Usage</h2>
+                <canvas id="energy-chart" height="120"></canvas>
+                <p class="mt-8 text-2xl text-center font-semibold" id="predicted-value"></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10">
+                    <h2 class="text-3xl font-bold mb-6 text-emerald-300">Smart Recommendations</h2>
+                    <p class="text-xl leading-relaxed" id="recommendation">Loading...</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10">
+                    <h2 class="text-3xl font-bold mb-6 text-emerald-300">AI Explanation (Granite LLM)</h2>
+                    <p class="text-xl leading-relaxed" id="explanation">Loading...</p>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10 text-center">
+                <h2 class="text-3xl font-bold mb-8 text-emerald-300">Simulated Controls</h2>
+                <div class="flex justify-center gap-12">
+                    <!-- Toggle switches remain the same as previous -->
+                    <label class="flex items-center cursor-pointer">
+                        <span class="mr-4 text-2xl">HVAC</span>
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="relative w-16 h-9 bg-gray-600 rounded-full peer peer-checked:bg-emerald-500 transition">
+                            <div class="absolute top-1 left-1 w-7 h-7 bg-white rounded-full transition peer-checked:translate-x-7"></div>
+                        </div>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <span class="mr-4 text-2xl">Lights</span>
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="relative w-16 h-9 bg-gray-600 rounded-full peer peer-checked:bg-emerald-500 transition">
+                            <div class="absolute top-1 left-1 w-7 h-7 bg-white rounded-full transition peer-checked:translate-x-7"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

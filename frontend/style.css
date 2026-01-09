@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+}
+
+button {
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#results {
+    display: none;
+}
+
+.controls {
+    margin-top: 20px;
+}
