@@ -2,4 +2,5 @@ venv/Library/bin/skl_core.1.dll filter=lfs diff=lfs merge=lfs -text
 venv/Library/bin/skl_intel_thread.1.dll filter=lfs diff=lfs merge=lfs -text
 venv/Library/bin/skl_pgi_thread.1.dll filter=lfs diff=lfs merge=lfs -text
 venv/Lib/site-packages/torch/lib/torch_cpu.dll filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
 venv/Library/bin/ski_core.1.dll filter=lfs diff=lfs merge=lfs -text
